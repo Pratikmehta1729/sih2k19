@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
@@ -13,7 +14,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="colorlib.com">
+	<meta name="author" content="colorlib.com">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up Form</title>
 
@@ -30,7 +31,7 @@
         <div class="container">
             <h2>PATTERN ADVISOR</h2>
             <form method="POST" id="signup-form" class="signup-form">
-<!--
+<!--   
                     <h3>
                         <span class="icon"><i class="ti-user"></i></span>
                         <span class="title_text">User</span>
@@ -92,6 +93,90 @@
                         </div>
                     </fieldset>
 -->
+
+<h3>
+    <span class="icon"><i class="ti-control-record"></i></span>
+    <span class="title_text">Tyre</span>
+</h3>
+<fieldset>
+    <legend>
+        <!-- <span class="step-heading">Offical Informaltion: </span> -->
+        <span class="step-number">Step 2 / 3</span>
+    </legend>
+    <div class="form-group">
+        <!-- <label for="tyre_id" class="form-label required">Tyre ID</label>
+        <input type="text" name="tyre_id" id="tyre_id" /> -->
+
+        <table id="myTable">
+            <thead>
+                <tr class="table100-head">
+                    <th class="column1">Tyre ID</th>
+                    <th class="column2">Diameter(in)</th>
+                    <th class="column3">Width(in)</th>
+                    <th class="column4">Weight(Kg)</th>
+                    <th class="column5">Quantity</th>
+                    <th class="column6">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr    >
+                        <td class="column1" ><input  type="text"   onchange="dd(this)" ></td>
+                        <td class="column2" >-</td>
+                        <td class="column3">-</td>
+                        <td class="column4"><input type="number" ></td>
+                        <td class="column5"><input type="number" ></td>
+                        <td class="column6"><i class="fas fa-trash" onclick="deleteRow(this)"></i> &nbsp; &nbsp;   <i class="fas fa-redo-alt" onclick="resetRow(this)"></i></td>
+                    </tr>
+                    
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="mycCreateFunction()">Create row</button>
+            <button onclick="myDeleteFunction()">Delete row</button>
+    </div>
+    <script>
+    function mycCreateFunction() {
+	console.log("hello");
+   // var table = document.getElementById("myTable");
+    // var rowindex= $('#myTable tr').length;
+    // var row = table.insertRow(table.size);
+   // row.setAttribute('onclick', 'indec(this)');
+   // row.setAttribute('onmouseover', 'indec(this)');
+    // var cell1 = row.insertCell(0);
+    // var cell2 = row.insertCell(1);
+    // var cell3 = row.insertCell(2);
+    // var cell4 = row.insertCell(3);
+    // var cell5 = row.insertCell(4);
+    // var cell6 = row.insertCell(5);
+  //   var id_d ="d"+rowindex;
+  //   var id_w ="w"+rowindex; 
+  //   var id_q ="q"+rowindex;
+  //   var id_dstring="<input type='text' id='"+id_d+ "' onchange='dd(this)'>";
+  //   var id_wstring="<input type='text' id='"+id_w+ "' onchange='dd(this)'>";
+  //   var id_qstring="<input type='text' id='"+id_q+ "' onchange='dd(this)'>";
+   //cell1.setAttribute('class', 'column1');
+    //cell1.setAttribute('id', );
+    // cell2.setAttribute('class', 'column2');
+    // cell3.setAttribute('class', 'column3');
+    // cell4.setAttribute('class', 'column4');
+    // cell5.setAttribute('class', 'column5');
+    // cell6.setAttribute('class', 'column6');
+    // cell1.innerHTML = "<input type='text' onchange='dd(this)'>";
+    // cell2.innerHTML = "-";
+    // cell3.innerHTML = "-";
+    // cell4.innerHTML = "<input type='text' >";
+    // cell5.innerHTML = "<input type='text' >";
+    // cell6.innerHTML = "<i class='fas fa-trash' onclick='deleteRow(this)'></i>&nbsp; &nbsp;   <i class='fas fa-redo-alt' onclick='resetRow(this)'></i>";
+  }
+    </script>
+
+
+    </div>
+    
+</fieldset>
+
+
+
 <!--********************************************  TRUCK  ********************************************-->
                     <h3>
                         <span class="icon"><i class="ti-truck"></i></span>
@@ -137,21 +222,29 @@
                         </div>
                     </fieldset>
 <!--********************************************  TIRE  ********************************************-->
-                    <h3>
+                    <!-- <h3>
                         <span class="icon"><i class="ti-control-record"></i></span>
                         <span class="title_text">Tyre</span>
                     </h3>
                     <fieldset>
-                        <legend>
-                            <span class="step-heading">Offical Informaltion: </span>
-                            <span class="step-number">Step 2 / 3</span>
+                        <legend> -->
+                            <!-- <span class="step-heading">Offical Informaltion: </span> -->
+                            <!-- <span class="step-number">Step 2 / 3</span>
                         </legend>
-                        <div class="form-group">
-                            <label for="tyre_id" class="form-label required">Tyre ID</label>
-                            <input type="text" name="tyre_id" id="tyre_id" />
+                        <div class="form-group"> -->
+                            <!-- <label for="tyre_id" class="form-label required">Tyre ID</label>
+                            <input type="text" name="tyre_id" id="tyre_id" /> -->
+ 
+                            <!-- <table>
+                                <tr>
+                                    <td>hello</td>
+                                    <td>hello</td>
+                                </tr>
+                            </table>
+
                         </div>
                         
-                </fieldset>
+                </fieldset> -->
 <!--********************************************   PREVIEW  ********************************************-->
                     <h3>
                         <span class="icon"><i class="ti-layout-tab-window"></i></span>
