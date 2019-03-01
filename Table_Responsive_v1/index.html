@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table id="myTable">
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Tyre ID</th>
+								<th class="column2">Diameter(in)</th>
+								<th class="column3">Width(in)</th>
+								<th class="column4">Weight(Kg)</th>
+								<th class="column5">Quantity</th>
+								<th class="column6">Edit</th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr    >
+									<td class="column1" ><input  type="text"   onchange="dd(this)" ></td>
+									<td class="column2" >-</td>
+									<td class="column3">-</td>
+									<td class="column4"><input type="number" ></td>
+									<td class="column5"><input type="number" ></td>
+									<td class="column6"><i class="fas fa-trash" onclick="deleteRow(this)"></i> &nbsp; &nbsp;   <i class="fas fa-redo-alt" onclick="resetRow(this)"></i></td>
+								</tr>
+								
+						</tbody>
+					</table>
+				</div>
+				<div style="text-align: center; margin-top: 20px;">
+						<button onclick="myCreateFunction()">Create row</button>
+						<button onclick="myDeleteFunction()">Delete row</button>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+
+
+
+<script>
+	//var rowindex,idd,idw,idq;
+	 
+	// function indec(x)
+	//  {
+
+
+	//      var g= x.rowIndex;
+	//      rowindex=g;
+	//      var CreateIdOfDimension= "d"+g;
+	//      var CreateIdOfWeight= "w"+g;
+	//      var CreateIdOfQuantity= "q"+g;
+	// 	 idd=CreateIdOfDimension;
+	// 	 idw=CreateIdOfWeight;
+	// 	 idq=CreateIdOfQuantity
+		 
+	// 	var xa = document.getElementById(t).value;
+	// 	if(xa==""){    
+	// 	var table_width = document.getElementById("myTable").rows[g].cells;
+	// 	table_width[1].innerHTML = t;
+	// }
+	 
+    function dd(p){
+		var dd_d= p.parentNode.parentNode.rowIndex;
+		console.log(dd_d);
+		console.log(p.value);
+		 var TireID = p.value;
+		 //var WeightOfTyre = document.getElementById(idw).value;
+         //var QuantityOfTire = document.getElementById(idq).value;
+
+		 //   ***************JUST CONVERSION WIDTH AND DIAMETER Start***************
+		 var widthInMmOfTyre=TireID[0]+TireID[1]+TireID[2];
+		 var RimDiamOfTyre=TireID[7]+TireID[8];
+		 var AsRatio=TireID[4]+TireID[5];
+		 var WidthInInch=parseFloat(widthInMmOfTyre);
+		 WidthInInch=(WidthInInch/25.4);
+		 var DiamInInchRim=parseFloat(RimDiamOfTyre);
+		 var DiamInInchTyre=parseFloat(AsRatio);
+		  DiamInInchTyre=DiamInInchTyre*WidthInInch*0.01;
+		 var TotalDiamInInch=DiamInInchRim +DiamInInchTyre+DiamInInchTyre;
+		 TotalDiamInInch= TotalDiamInInch.toFixed(1);
+		 WidthInInch=WidthInInch.toFixed(1);
+		 // console.log(WidthInInch);
+		  //console.log(TotalDiamInInch);
+		  //WeightOfTyre = parseInt(WeightOfTyre);
+		  //QuantityOfTire = parseInt(QuantityOfTire)
+		//   ***************JUST CONVERSION WIDTH AND DIAMETER END***************
+
+
+		var table_data = document.getElementById("myTable").rows[dd_d].cells;
+		  table_data[1].innerHTML = TotalDiamInInch+"'";
+		  table_data[2].innerHTML = WidthInInch+"'";
+		 // table_data[5].innerHTML = WeightOfTyre*QuantityOfTire;
+	}
+	function deleteRow(x){
+		var table = document.getElementById("myTable");
+		var dd_d = x.parentNode.parentNode.rowIndex;
+		var d = $('#myTable tr').length;
+
+		if(d>2){
+		var row = table.deleteRow(dd_d);
+		}
+	}
+	function resetRow(x) 
+	{ var dd_d = x.parentNode.parentNode.rowIndex;
+		var table_data = document.getElementById("myTable").rows[dd_d].cells;
+		console.log(dd_d);
+		  table_data[0].innerHTML ="<input type='text' onchange='dd(this)'>";
+		  table_data[1].innerHTML = "-";
+		  table_data[2].innerHTML ="-";
+		  table_data[3].innerHTML = "<input type='text' >";
+		  table_data[4].innerHTML ="<input type='text' >";
+		  table_data[5].innerHTML ="<i class='fas fa-trash' onclick='deleteRow(this)'></i>&nbsp; &nbsp;   <i class='fas fa-redo-alt' onclick='resetRow(this)'></i>";
+
+
+	}
+
+	
+
+	</script>
+
+<script>
+function myCreateFunction() {
+	
+  var table = document.getElementById("myTable");
+  var rowindex= $('#myTable tr').length;
+  var row = table.insertRow(table.size);
+ // row.setAttribute('onclick', 'indec(this)');
+ // row.setAttribute('onmouseover', 'indec(this)');
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+//   var id_d ="d"+rowindex;
+//   var id_w ="w"+rowindex; 
+//   var id_q ="q"+rowindex;
+//   var id_dstring="<input type='text' id='"+id_d+ "' onchange='dd(this)'>";
+//   var id_wstring="<input type='text' id='"+id_w+ "' onchange='dd(this)'>";
+//   var id_qstring="<input type='text' id='"+id_q+ "' onchange='dd(this)'>";
+ cell1.setAttribute('class', 'column1');
+  //cell1.setAttribute('id', );
+  cell2.setAttribute('class', 'column2');
+  cell3.setAttribute('class', 'column3');
+  cell4.setAttribute('class', 'column4');
+  cell5.setAttribute('class', 'column5');
+  cell6.setAttribute('class', 'column6');
+  cell1.innerHTML = "<input type='text' onchange='dd(this)'>";
+  cell2.innerHTML = "-";
+  cell3.innerHTML = "-";
+  cell4.innerHTML = "<input type='text' >";
+  cell5.innerHTML = "<input type='text' >";
+  cell6.innerHTML = "<i class='fas fa-trash' onclick='deleteRow(this)'></i>&nbsp; &nbsp;   <i class='fas fa-redo-alt' onclick='resetRow(this)'></i>";
+}
+
+function myDeleteFunction() {
+
+	var table = document.getElementById("myTable");
+	var d = $('#myTable tr').length;
+	console.log("this is you know" +" "+ d);
+  if(d>2)  
+	{var row = table.deleteRow(d-1);}
+ 
+}
+
+ 
+</script>
+
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
