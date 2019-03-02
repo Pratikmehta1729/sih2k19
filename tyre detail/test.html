@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+    #form_input{
+   width:300px;
+   height: 300px;
+   background-color: aqua;
+   display: block;
+    }
+    #preview{
+        width:300px;
+   height: 300px;
+   background-color: brown;
+   display: none;
+    }
+    </style>
+</head>
+<body>
+    <div  id="form_input">
+
+    </div>
+    <div id="preview">
+
+    </div>
+    <button onclick="changeview()">submit</button>
+    <button>hello</button>
+    <script>
+    function changeview(){
+        console.log("hello");
+        document.getElementById("form_input").style.display = "none";
+        document.getElementById("preview").style.display = "block";
+
+    }
+    </script>
+</body>
+</html>
