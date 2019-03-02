@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tyre</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+<<<<<<< HEAD
+    <div>
+    <table id="myTable" border="2">
+        <thead>
+            <tr class="table100-head">
+                <th class="column1">Tyre ID</th>
+                <th class="column2">Diameter(in)</th>
+                <th class="column3">Width(in)</th>
+                <th class="column4">Weight(Kg)</th>
+                <th class="column5">Quantity</th>
+                <th class="column6">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr    >
+                    <td class="column1" ><input  type="text"   onchange="dd(this)"  id="d1" ></td>
+                    <td class="column2" >-</td>
+                    <td class="column3">-</td>
+                    <td class="column4"><input type="number"  id="w1" ></td>
+                    <td class="column5"><input type="number" id="q1" ></td>
+                    <td class="column6"><i class="fas fa-trash" onclick="deleteRow(this)"></i> &nbsp; &nbsp;  <!-- <i class="fas fa-redo-alt" onclick="resetRow(this)"></i>--> </td>
+                </tr>
+                
+        </tbody>
+        
+    
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+		<button onclick="myCreateFunction()">Create row</button>
+		<button>hello</button>
+		
+        <!-- <button onclick="myDeleteFunction()">Delete row</button> -->
+	</div>
+	<p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>
+ <p id="info"></p>
+</div>
+<script>
+	//var rowindex,idd,idw,idq;
+	 
+	// function indec(x)
+	//  {
+
+
+	//      var g= x.rowIndex;
+	//      rowindex=g;
+	//      var CreateIdOfDimension= "d"+g;
+	//      var CreateIdOfWeight= "w"+g;
+	//      var CreateIdOfQuantity= "q"+g;
+	// 	 idd=CreateIdOfDimension;
+	// 	 idw=CreateIdOfWeight;
+	// 	 idq=CreateIdOfQuantity
+		 
+	// 	var xa = document.getElementById(t).value;
+	// 	if(xa==""){    
+	// 	var table_width = document.getElementById("myTable").rows[g].cells;
+	// 	table_width[1].innerHTML = t;
+	// }
+	 
+    function dd(p){
+		var dd_d= p.parentNode.parentNode.rowIndex;
+		//console.log(dd_d);
+		//console.log(p.value);
+		 var TireID = p.value;
+		 //var WeightOfTyre = document.getElementById(idw).value;
+         //var QuantityOfTire = document.getElementById(idq).value;
+
+		 //   ***************JUST CONVERSION WIDTH AND DIAMETER Start***************
+		 var widthInMmOfTyre=TireID[0]+TireID[1]+TireID[2];
+		 var RimDiamOfTyre=TireID[7]+TireID[8];
+		 var AsRatio=TireID[4]+TireID[5];
+		 var WidthInInch=parseFloat(widthInMmOfTyre);
+		 WidthInInch=(WidthInInch/25.4);
+		 var DiamInInchRim=parseFloat(RimDiamOfTyre);
+		 var DiamInInchTyre=parseFloat(AsRatio);
+		  DiamInInchTyre=DiamInInchTyre*WidthInInch*0.01;
+		 var TotalDiamInInch=DiamInInchRim +DiamInInchTyre+DiamInInchTyre;
+		 TotalDiamInInch= TotalDiamInInch.toFixed(1);
+		 WidthInInch=WidthInInch.toFixed(1);
+		 // console.log(WidthInInch);
+		  //console.log(TotalDiamInInch);
+		  //WeightOfTyre = parseInt(WeightOfTyre);
+		  //QuantityOfTire = parseInt(QuantityOfTire)
+		//   ***************JUST CONVERSION WIDTH AND DIAMETER END***************
+
+
+		var table_data = document.getElementById("myTable").rows[dd_d].cells;
+		  table_data[1].innerHTML = TotalDiamInInch+"'";
+		  table_data[2].innerHTML = WidthInInch+"'";
+		 // table_data[5].innerHTML = WeightOfTyre*QuantityOfTire;
+	}
+	function deleteRow(x){
+		var table = document.getElementById("myTable");
+		var dd_d = x.parentNode.parentNode.rowIndex;
+		var d = myTable.rows.length;
+       
+		if(d>2){
+		var row = table.deleteRow(dd_d);
+		
+		console.log(dd_d);
+		console.log(d);
+		for(var i=dd_d; i<d-1; i++)
+		 { var nld = "d" + i;
+		  var nlw = "w" + i;
+          var nlq = "q" + i;
+		  var old = "d" + (i+1);
+		  var olw = "w" + (i+1);
+          var olq = "q" + (i+1);
+		  console.log(nld);
+		  console.log(nlw);
+		  console.log(nlq);
+		  console.log(old);
+		  console.log(olw);
+		  console.log(olq);
+		  document.getElementById(old).id = nld;
+		  document.getElementById(olw).id = nlw;
+		  document.getElementById(olq).id = nlq;
+		}
+
+	
+
+
+=======
+	<div>
+		<table id="myTable" border="2">
+			<thead>
+				<tr class="table100-head">
+					<th class="column1">Tyre ID</th>
+					<th class="column2">Diameter(in)</th>
+					<th class="column3">Width(in)</th>
+					<th class="column4">Weight(Kg)</th>
+					<th class="column5">Quantity</th>
+					<th class="column6">Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="column1"><input type="text" onchange="dd(this)"></td>
+					<td class="column2">-</td>
+					<td class="column3">-</td>
+					<td class="column4"><input type="number"></td>
+					<td class="column5"><input type="number"></td>
+					<td class="column6"><i class="fas fa-trash" onclick="deleteRow(this)"></i> &nbsp; &nbsp; <i
+							class="fas fa-redo-alt" onclick="resetRow(this)"></i></td>
+				</tr>
+
+			</tbody>
+
+
+		</table>
+		<div style="text-align: center; margin-top: 20px;">
+			<button onclick="myCreateFunction()">Create row</button>
+			<!-- <button onclick="myDeleteFunction()">Delete row</button> -->
+		</div>
+	</div>
+	<script>
+		//var rowindex,idd,idw,idq;
+
+		// function indec(x)
+		//  {
+
+
+		//      var g= x.rowIndex;
+		//      rowindex=g;
+		//      var CreateIdOfDimension= "d"+g;
+		//      var CreateIdOfWeight= "w"+g;
+		//      var CreateIdOfQuantity= "q"+g;
+		// 	 idd=CreateIdOfDimension;
+		// 	 idw=CreateIdOfWeight;
+		// 	 idq=CreateIdOfQuantity
+
+		// 	var xa = document.getElementById(t).value;
+		// 	if(xa==""){    
+		// 	var table_width = document.getElementById("myTable").rows[g].cells;
+		// 	table_width[1].innerHTML = t;
+		// }
+
+		function dd(p) {
+			var dd_d = p.parentNode.parentNode.rowIndex;
+			console.log(dd_d);
+			console.log(p.value);
+			var TireID = p.value;
+			//var WeightOfTyre = document.getElementById(idw).value;
+			//var QuantityOfTire = document.getElementById(idq).value;
+
+			//   ***************JUST CONVERSION WIDTH AND DIAMETER Start***************
+			var widthInMmOfTyre = TireID[0] + TireID[1] + TireID[2];
+			var RimDiamOfTyre = TireID[7] + TireID[8];
+			var AsRatio = TireID[4] + TireID[5];
+			var WidthInInch = parseFloat(widthInMmOfTyre);
+			WidthInInch = (WidthInInch / 25.4);
+			var DiamInInchRim = parseFloat(RimDiamOfTyre);
+			var DiamInInchTyre = parseFloat(AsRatio);
+			DiamInInchTyre = DiamInInchTyre * WidthInInch * 0.01;
+			var TotalDiamInInch = DiamInInchRim + DiamInInchTyre + DiamInInchTyre;
+			TotalDiamInInch = TotalDiamInInch.toFixed(1);
+			WidthInInch = WidthInInch.toFixed(1);
+			// console.log(WidthInInch);
+			//console.log(TotalDiamInInch);
+			//WeightOfTyre = parseInt(WeightOfTyre);
+			//QuantityOfTire = parseInt(QuantityOfTire)
+			//   ***************JUST CONVERSION WIDTH AND DIAMETER END***************
+
+
+			var table_data = document.getElementById("myTable").rows[dd_d].cells;
+			table_data[1].innerHTML = TotalDiamInInch + "'";
+			table_data[2].innerHTML = WidthInInch + "'";
+			// table_data[5].innerHTML = WeightOfTyre*QuantityOfTire;
+>>>>>>> f03a17327d2981a74182ff01d7aec22d31bd82f4
+		}
+		function deleteRow(x) {
+			var table = document.getElementById("myTable");
+			var dd_d = x.parentNode.parentNode.rowIndex;
+			var d = ('#myTable tr').length;
+
+			if (d > 2) {
+				var row = table.deleteRow(dd_d);
+			}
+		}
+		function resetRow(x) {
+			var dd_d = x.parentNode.parentNode.rowIndex;
+			var table_data = document.getElementById("myTable").rows[dd_d].cells;
+			console.log(dd_d);
+			table_data[0].innerHTML = "<input type='text' onchange='dd(this)'>";
+			table_data[1].innerHTML = "-";
+			table_data[2].innerHTML = "-";
+			table_data[3].innerHTML = "<input type='text' >";
+			table_data[4].innerHTML = "<input type='text' >";
+			table_data[5].innerHTML = "<i class='fas fa-trash' onclick='deleteRow(this)'></i>&nbsp; &nbsp;   <i class='fas fa-redo-alt' onclick='resetRow(this)'></i>";
+
+
+		}
+
+
+
+	</script>
+
+<<<<<<< HEAD
+<script>
+function myCreateFunction() {
+
+	
+    
+
+	console.log("hello");
+  var table = document.getElementById("myTable");
+  var rowindex= myTable.rows.length;
+//  alert(rowindex);
+var strti = "d" + (rowindex-1);
+var strwe = "w" + (rowindex-1);
+var strqe = "q" + (rowindex-1);
+console.log(strti);
+var ti = document.getElementById(strti).value;
+var we = document.getElementById(strwe).value;
+var qe = document.getElementById(strqe).value;
+if(ti!="" && we!="" && qe!=""){
+  var row = table.insertRow(table.size);
+ // row.setAttribute('onclick', 'indec(this)');
+ // row.setAttribute('onmouseover', 'indec(this)');
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+    var id_d ="d"+rowindex;
+    var id_w ="w"+rowindex; 
+    var id_q ="q"+rowindex;
+//   var id_dstring="<input type='text' id='"+id_d+ "' onchange='dd(this)'>";
+//   var id_wstring="<input type='text' id='"+id_w+ "' onchange='dd(this)'>";
+//   var id_qstring="<input type='text' id='"+id_q+ "' onchange='dd(this)'>";
+ cell1.setAttribute('class', 'column1');
+  //cell1.setAttribute('id', );
+  cell2.setAttribute('class', 'column2');
+  cell3.setAttribute('class', 'column3');
+  cell4.setAttribute('class', 'column4');
+  cell5.setAttribute('class', 'column5');
+  cell6.setAttribute('class', 'column6');
+  cell1.innerHTML = "<input type='text' onchange='dd(this)' " + "id='"+ id_d+"'>";
+  cell2.innerHTML = "-";
+  cell3.innerHTML = "-";
+  cell4.innerHTML = "<input type='text' " + "id='"+ id_w+"'>";
+  cell5.innerHTML = "<input type='text'" + "id='"+ id_q+"' >";
+  cell6.innerHTML = "<i class='fas fa-trash' onclick='deleteRow(this)'></i>&nbsp; &nbsp;  "; // <i class='fas fa-redo-alt' onclick='resetRow(this)'></i>
+}
+}
+function myDeleteFunction() {
+
+	var table = document.getElementById("myTable");
+	var d = ('#myTable tr').length;
+	console.log("this is you know" +" "+ d);
+  if(d>2)  
+	{var row = table.deleteRow(d-1);
+	 console.log(myTable.rows.length);
+	}
+ 
+}
+
+ 
+</script>
+ 
+<script>
+    function showTableData() {
+   
+		
+        document.getElementById('info').innerHTML = "";
+        var myTab = document.getElementById('myTable');
+		//var val = document.getElementById('t1');
+		//console.log(val.value);
+      //info.innerHTML = val.value;
+		 
+
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+      /*   for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells;
+
+            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+            for (var j = 0; j < objCells.length-1; j++) {
+                if(j==1 || j==2 ){info.innerHTML = info.innerHTML + '    ' + objCells.item(j).innerHTML;}
+				else if(j==0){ info.innerHTML = info.innerHTML +' ' + document.getElementById("d1").value.innerHTML;}
+				else if(j==3){ info.innerHTML = info.innerHTML +' ' + document.getElementById("w1").value.innerHTML;}
+				else if(j==4){ info.innerHTML = info.innerHTML +' ' + document.getElementById("q1").value.innerHTML;}
+
+            }
+            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+        }*/
+		var sf = document.getElementById('d1').value;
+		console.log(sf);
+		if(sf!="")
+		{
+		for(var i=0; i<4; i++)
+		{document.getElementById('info').innerHTML= info.innerHTML + ' ' + sf;}
+		}
+	}
+</script>
+=======
+	<script>
+		function myCreateFunction() {
+			// console.log("hello");
+			var table = document.getElementById("myTable");
+			var rowindex = ('#myTable tr').length;
+			var row = table.insertRow(table.size);
+			// row.setAttribute('onclick', 'indec(this)');
+			// row.setAttribute('onmouseover', 'indec(this)');
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
+			var cell5 = row.insertCell(4);
+			var cell6 = row.insertCell(5);
+			//   var id_d ="d"+rowindex;
+			//   var id_w ="w"+rowindex; 
+			//   var id_q ="q"+rowindex;
+			//   var id_dstring="<input type='text' id='"+id_d+ "' onchange='dd(this)'>";
+			//   var id_wstring="<input type='text' id='"+id_w+ "' onchange='dd(this)'>";
+			//   var id_qstring="<input type='text' id='"+id_q+ "' onchange='dd(this)'>";
+			cell1.setAttribute('class', 'column1');
+			//cell1.setAttribute('id', );
+			cell2.setAttribute('class', 'column2');
+			cell3.setAttribute('class', 'column3');
+			cell4.setAttribute('class', 'column4');
+			cell5.setAttribute('class', 'column5');
+			cell6.setAttribute('class', 'column6');
+			cell1.innerHTML = ("<input type='text' onchange='dd(this)'>");
+			cell2.innerHTML = "-";
+			cell3.innerHTML = "-";
+			cell4.innerHTML = "<input type='text' >";
+			cell5.innerHTML = "<input type='text' >";
+			cell6.innerHTML = "<i class='fas fa-trash' onclick='deleteRow(this)'></i>&nbsp; &nbsp;   <i class='fas fa-redo-alt' onclick='resetRow(this)'></i>";
+		}
+
+		function myDeleteFunction() {
+
+			var table = document.getElementById("myTable");
+			var d = ('#myTable tr').length;
+			console.log("this is you know" + " " + d);
+			if (d > 2) { var row = table.deleteRow(d - 1); }
+
+		}
+
+
+	</script>
+>>>>>>> f03a17327d2981a74182ff01d7aec22d31bd82f4
+
+</body>
+
+</html>
