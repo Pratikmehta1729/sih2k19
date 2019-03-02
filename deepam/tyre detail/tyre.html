@@ -2,39 +2,46 @@
 <html>
 
 <head>
-	<title>Pattern Advisor</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
-
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tyre</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+	<div>
+		<table id="myTable" border="2">
+			<thead>
+				<tr class="table100-head">
+					<th class="column1">Tyre ID</th>
+					<th class="column2">Diameter(in)</th>
+					<th class="column3">Width(in)</th>
+					<th class="column4">Weight(Kg)</th>
+					<th class="column5">Quantity</th>
+					<th class="column6">Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="column1"><input type="text" onchange="dd(this)"></td>
+					<td class="column2">-</td>
+					<td class="column3">-</td>
+					<td class="column4"><input type="number"></td>
+					<td class="column5"><input type="number"></td>
+					<td class="column6"><i class="fas fa-trash" onclick="deleteRow(this)"></i> &nbsp; &nbsp; <i
+							class="fas fa-redo-alt" onclick="resetRow(this)"></i></td>
+				</tr>
 
-	<style>
-		.logo {
-			height: 10rem;
-		}
-
-		.form-border {
-			border: 2px solid black;
-			margin: 2rem;
-			padding: 3rem;
-		}
-	</style>
+			</tbody>
 
 
-	<!-- ============================================Table code ====================================-->
-
+		</table>
+		<div style="text-align: center; margin-top: 20px;">
+			<button onclick="myCreateFunction()">Create row</button>
+			<!-- <button onclick="myDeleteFunction()">Delete row</button> -->
+		</div>
+	</div>
 	<script>
 		//var rowindex,idd,idw,idq;
 
@@ -118,7 +125,7 @@
 
 	<script>
 		function myCreateFunction() {
-			console.log("hello");
+			// console.log("hello");
 			var table = document.getElementById("myTable");
 			var rowindex = ('#myTable tr').length;
 			var row = table.insertRow(table.size);
@@ -143,7 +150,7 @@
 			cell4.setAttribute('class', 'column4');
 			cell5.setAttribute('class', 'column5');
 			cell6.setAttribute('class', 'column6');
-			cell1.innerHTML = "<input type='text' onchange='dd(this)'>";
+			cell1.innerHTML = ("<input type='text' onchange='dd(this)'>");
 			cell2.innerHTML = "-";
 			cell3.innerHTML = "-";
 			cell4.innerHTML = "<input type='text' >";
@@ -163,142 +170,72 @@
 
 	</script>
 
-</head>
-
-<body>
-
-
-	<div class="text-center">
-		<div>
-			<img src="images/logo.jpg" class="logo img-fluid">
-
-		</div>
-		<br>
-
-
-
-	</div>
-
-	<div class="container">
-
-		<form class="form-border">
-			<div class="text-center">
-				<h2>Vehicle Type</h2>
-
-			</div>
-
-
-			<div class="form-row">
-
-				<div class="form-group col-md-12">
-					<label for="truckType">Truck Type</label>
-					<select id="truckType" class="form-control">
-						<option selected>MXL 270</option>
-						<option value="MXL 270">MXL 270</option>
-						<option value="MXL 250">MXL 250</option>
-						<option value="MXL 220">MXL 220</option>
-						<option value="MXL 200">MXL 200</option>
-						<option value="FTL">FTl</option>
-						<option value="FTL 2FT">FTL 2FT</option>
-						<option value="CTL">CTL</option>
-					</select>
-				</div>
-
-			</div>
-			<div class="text-center">
-				<h2>Loading Plan</h2>
-
-			</div>
-
-
-			<div class="form-row">
-
-				<div class="form-group col-md-12">
-					<label for="tyrePlan">Tyre Plan</label>
-
-
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th scope="col">S.No.</th>
-								<th scope="col">BSID</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-<!-- Pratiks table -->
-			<div>
-					<table id="myTable" border="2">
-						<thead>
-							<tr class="table100-head">
-								<th class="column1">Tyre ID</th>
-								<th class="column2">Diameter(in)</th>
-								<th class="column3">Width(in)</th>
-								<th class="column4">Weight(Kg)</th>
-								<th class="column5">Quantity</th>
-								<th class="column6">Edit</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="column1"><input type="text" onchange="dd(this)"></td>
-								<td class="column2">-</td>
-								<td class="column3">-</td>
-								<td class="column4"><input type="number"></td>
-								<td class="column5"><input type="number"></td>
-								<td class="column6"><i class="fas fa-trash" onclick="deleteRow(this)"></i> &nbsp; &nbsp; <i
-										class="fas fa-redo-alt" onclick="resetRow(this)"></i></td>
-							</tr>
-			
-						</tbody>
-			
-			
-					</table>
-					<div style="text-align: center; margin-top: 20px;">
-						<button onclick="myCreateFunction()">Create row</button>
-						<!-- <button onclick="myDeleteFunction()">Delete row</button> -->
-					</div>
-				</div>
-
-<script>
-function myCreateFunction(){
-	alert("Hello");
-}
-</script>
-
-
-
-			<button class="btn btn-primary">Add</button>
-			<button type="submit" class="btn btn-primary">Sign in</button>
-		</form>
-
-	</div>
-
-
 </body>
 
 </html>
+
+
+
+<!-- 
+<div class="form-row">
+
+		<div class="form-group col-md-12">
+			<label for="truckType">Truck Type</label>
+			<select id="truckType" class="form-control">
+				<option selected>MXL 270</option>
+				<option value="MXL 270">MXL 270</option>
+				<option value="MXL 250">MXL 250</option>
+				<option value="MXL 220">MXL 220</option>
+				<option value="MXL 200">MXL 200</option>
+				<option value="FTL">FTl</option>
+				<option value="FTL 2FT">FTL 2FT</option>
+				<option value="CTL">CTL</option>
+			</select>
+		</div>
+
+	</div>
+	<div class="text-center">
+		<h2>Loading Plan</h2>
+
+	</div>
+
+
+	<div class="form-row">
+
+		<div class="form-group col-md-12">
+			<label for="tyrePlan">Tyre Plan</label>
+
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">S.No.</th>
+						<th scope="col">BSID</th>
+						<th scope="col">Last</th>
+						<th scope="col">Handle</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div> -->
